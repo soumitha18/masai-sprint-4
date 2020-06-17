@@ -8,6 +8,12 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <style>
+            #position{
+                top : 200px
+            }
+        </style>
+    
     </head>
     <body>
         <nav class="bg-secondary p-3 fixed-top">
@@ -18,6 +24,24 @@
             <!--<button class="btn bg-light mx-2 active" id="subscription">Subscription</button>-->
             <button class="btn bg-light mx-2" id="sign">Sign Up/In</button>
         </nav>
+        <img src="resources/bg.jpeg" style="width: 100%;">
+        <div class="card offset-1 col-2  bg-light shadow p-3 mb-5 bg-white rounded position-fixed fixed-top" id="position">
+            <h3>Car subscription Start at ‎₹‎12,999/mo</h3>
+            <p class="text-muted"><small>Get a subscription car for one month or more than for your personal work</small></p>
+            <input type="button" value="Get all Cars" id="getCars" class="btn bg-success text-light">
+        </div> 
+        <div class="container" id="cars">
+            
+        </div>
+
+        <div class="container-fluid bg-secondary my-5 p-5 text-light">
+            <div class="container">
+                <h3 class="font-weight-bold">Why Subscribe a Personal Car?</h3>
+                <p>It's a different way of owning a car, without any down payment or car loan. Your monthly fee covers insurance, service & maintenance. Plus, there are no long term commitments - you can return, extend or buy-out the car when you want. And all this at a price cheaper than an EMI!</p>
+                <p>Coche Understands the innate necessary to adapt to the changing trends of the way we  travel and commute.</p>
+                <p>Lets take a Subscribe car to enjoy your trip</p>
+            </div>
+        </div>
 
         <script src="script.js"></script>
         <script src="subscription.js"></script>
