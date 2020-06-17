@@ -35,7 +35,11 @@ function createCard(data){
 
     var btn = document.createElement("button")
     btn.setAttribute("class", "btn btn-primary rounded-pill")
+    btn.setAttribute("data-toggle", "modal" )
+    btn.setAttribute("data-target", "#exampleModal")
     btn.innerHTML = "Book"
+
+    createModal()
 
     card.append(title, img, text, btn)
 
@@ -43,3 +47,47 @@ function createCard(data){
 
     return div
 }
+
+function createModal(){
+    var div = document.createElement("div")
+    div.setAttribute("class", "modal fade")
+    div.setAttribute("id", "exampleModal")
+    div.setAttribute("tabindex", "-1")
+    div.setAttribute("role" , "dialog")
+    div.setAttribute("aria-labelledby", "exampleModalLabel")
+    div.setAttribute("aria-hidden", "true")
+
+    var dialog = document.createElement("div")
+    dialog.setAttribute("class" , "modal-dialog p-5")
+    dialog.setAttribute("role", "document")
+
+    var heading = document.createElement("h5")
+    heading.setAttribute("class", "mb-4 font-weight-bold")
+
+    var emailform = document.createElement("div")
+    var label1 = document.createElement("label")
+    label1.setAttribute("for" , "exampleInputEmail1")
+    label1.innerHTML = "Email address"
+    var form1 = document.createElement("input")
+    form1.setAttribute("type" , "email")
+    form1.setAttribute("class" , "form-control")
+    form1.setAttribute("id", "email")
+    form1.setAttribute("aria-describedby" , "emailHelp")
+    form1.setAttribute("placeholder" , "Enter Email!")
+    emailform.append(label1, form1)
+
+    var passwordform = document.createElement("div")
+    var label2 = document.createElement("label")
+    label2.setAttribute("for" , "exampleInputPassword1")
+    label2.innerHTML = "Password"
+    var form2 = document.createElement("input")
+    form2.setAttribute("type" , "password")
+    form2.setAttribute("class" , "form-control")
+    form2.setAttribute("id", "password")
+    form2.setAttribute("placeholder" , "Enter Password!")
+    passwordform.append(label2, form2)
+
+    dialog.append(heading, emailform, passwordform)
+    div.append(dialog)
+}
+
