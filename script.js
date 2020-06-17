@@ -12,9 +12,10 @@ window.addEventListener("load", function(){
 
     var sign = document.getElementById("sign")
     sign.addEventListener("click", gotoSign)
+
 })
 
-var carSubscription  = [
+var car = [
     ["Tigo (45K kms)", "" , "₹12,999/mo"],
     ["Swift MT (45K kms)", "" , "₹13,499/mo"],
     ["Freestyle (45K kms)", "" , "₹13,499/mo"],
@@ -51,12 +52,16 @@ function gotoHome(){
 }
 
 function gotoDetail(){
+    var data = JSON.stringify(car)
+
+    localStorage.setItem("carDetails" , data)
+
     event.preventDefault()
     location.href = "details.html"
 }
 
 function gotoSubscription(){
-    var data = JSON.stringify(carSubscription)
+    var data = JSON.stringify(car)
 
     localStorage.setItem("carSubscription" , data)
 
