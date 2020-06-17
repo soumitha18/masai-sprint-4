@@ -1,9 +1,22 @@
 var data = localStorage.getItem("carDetails")
 var totalCars = JSON.parse(data)
-
+var targetbtn
 window.addEventListener("load", function(){
 
     createLH(totalCars)
+
+    var login = document.getElementById("login")
+
+    login.addEventListener("click", function(){
+        checkData()
+    })
+
+    var div = document.getElementById("cars")
+
+    div.addEventListener("click", function(){
+        targetbtn = event.target.getAttribute("id")
+        console.log(targetbtn)
+    })
 })
 
 function createLH(cars){
@@ -11,7 +24,7 @@ function createLH(cars){
     div.innerHTML = ""
 
     for(i=0; i<cars.length; i++){
-        var data = createCard(cars[i])
+        var data = createCard(cars[i], i)
         div.append(data)
     }
 }
@@ -21,12 +34,12 @@ function createHL(cars){
     div.innerHTML = ""
 
     for(i=cars.length - 1; i>0; i--){
-        var data = createCard(cars[i])
+        var data = createCard(cars[i], i)
         div.append(data)
     }
 }
 
-function createCard(data){
+function createCard(data, i){
     var div = document.createElement("div")
     div.setAttribute("class", "col-4")
 
@@ -48,6 +61,7 @@ function createCard(data){
     btn.setAttribute("class", "btn btn-primary rounded-pill")
     btn.setAttribute("data-toggle", "modal" )
     btn.setAttribute("data-target", "#exampleModal")
+    btn.id = i
     btn.innerHTML = "Book"
 
     card.append(title, img, text, btn)
@@ -70,8 +84,36 @@ function selectOption(){
     }
 }
 
-var login = document.getElementById("login")
+function checkData(){
+    var email = document.getElementById("email").value
+    var password = document.getElementById("password").value
 
-login.addEventListener("click", function(){
-    console.log("done")
-})
+   // console.log(email , password)
+
+    var loginData = localStorage.getItem("loginData")
+    var data = JSON.parse(loginData)
+    
+    for(var i=0; i<data.length; i++){
+        if(email == data[i][1]){
+            if(password == data[i][2]){
+                generateBill(email)
+                break
+            }
+        }
+    }
+
+    event.preventDefault()
+    location.href = "bill.html"
+}
+
+function generateBill(email){
+
+    var arr = [Number(targetbtn), "det", email]
+    var data = localStorage.getItem("billData")
+
+    var billData = JSON.parse(data) || []
+    billData.push(arr)
+
+    var str = JSON.stringify(billData)
+    localStorage.setItem("billData", str)
+}

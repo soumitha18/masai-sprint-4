@@ -12,13 +12,13 @@ function setDetails(){
     var password = document.getElementById("password").value  
 
     var arr = [name, email,  password]
-    var data = localStorage.getItem("logindata")
+    var data = localStorage.getItem("loginData")
 
     var loginData = JSON.parse(data) || []
     loginData.push(arr)
 
     var str = JSON.stringify(loginData)
-    localStorage.setItem("logindata", str)
+    localStorage.setItem("loginData", str)
     
     document.getElementById("email").value = ""
     document.getElementById("name").value = ""

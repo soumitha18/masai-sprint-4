@@ -1,5 +1,6 @@
 var data = localStorage.getItem("carSubscription")
 var cars = JSON.parse(data)
+var targetbtn
 
 window.addEventListener("load", function(){
     
@@ -15,6 +16,14 @@ window.addEventListener("load", function(){
     login.addEventListener("click", function(){
         checkData()
     })
+
+    var div = document.getElementById("cars")
+
+    div.addEventListener("click", function(){
+        targetbtn = event.target.getAttribute("id")
+        console.log(targetbtn)
+    })
+    
 
 })
 
@@ -53,7 +62,7 @@ function renderDomLH(cars){
     div.innerHTML = ""
 
     for(i=0; i<cars.length; i++){
-        var data = createCard(cars[i])
+        var data = createCard(cars[i], i)
         div.append(data)
     }
 }
@@ -63,12 +72,12 @@ function renderDomHL(cars){
     div.innerHTML = ""
 
     for(i=cars.length-1; i>=0; i--){
-        var data = createCard(cars[i])
+        var data = createCard(cars[i], i)
         div.append(data)
     }
 }
 
-function createCard(data){
+function createCard(data , i){
    // console.log(data)
     var div = document.createElement("div")
     div.setAttribute("class", "col-4")
@@ -88,9 +97,10 @@ function createCard(data){
     text.innerHTML = "Per Kilometer : ₹" + data[2]
 
     var btn = document.createElement("button")
-    btn.setAttribute("class", "btn btn-primary rounded-pill")
+    btn.setAttribute("class", "btn btn-primary rounded-pill target")
     btn.setAttribute("data-toggle", "modal" )
     btn.setAttribute("data-target", "#exampleModal")
+    btn.id = i
     btn.innerHTML = "Book"
 
     card.append(title, img, text, btn)
@@ -110,4 +120,38 @@ function selectOption(){
    else if( select == "high to low"){
         renderDomHL(cars)
    }
+}
+
+function checkData(){
+    var email = document.getElementById("email").value
+    var password = document.getElementById("password").value
+
+   // console.log(email , password)
+
+    var loginData = localStorage.getItem("loginData")
+    var data = JSON.parse(loginData)
+    
+    for(var i=0; i<data.length; i++){
+        if(email == data[i][1]){
+            if(password == data[i][2]){
+                generateBill(email)
+                break
+            }
+        }
+    }
+
+    event.preventDefault()
+    location.href = "bill.html"
+}
+
+function generateBill(email){
+
+    var arr = [Number(targetbtn) , "sub", email]
+    var data = localStorage.getItem("billData")
+
+    var billData = JSON.parse(data) || []
+    billData.push(arr)
+
+    var str = JSON.stringify(billData)
+    localStorage.setItem("billData", str)
 }
