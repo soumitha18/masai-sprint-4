@@ -79,14 +79,20 @@ function renderData(){
         carName.innerHTML = "Name of the Car : " + confirmInfo[0]
 
         var km = document.createElement("p")
-        km.innerHTML = "Per Month Total Prize : Rs." + confirmInfo[2]
+        km.innerHTML = "Per Month Total Prize : Rs." + confirmInfo[2] + "/-"
+
+        var input = document.createElement("input")
+        input.setAttribute("class", "fomt-control")
+        input.setAttribute("id", "mon")
+        input.setAttribute("type", "number")
+        input.setAttribute("placeholder", "Enter No of Months!")
 
         var conBtn = document.createElement("button")
         conBtn.setAttribute("class", "btn mt-3 btn-block btn-secondary")
         conBtn.setAttribute("id", "confirm")
         conBtn.innerHTML = "confirm"
 
-        body.append(name, mail, carInfo, img, carName, km, conBtn)
+        body.append(name, mail, carInfo, img, carName, km, input, conBtn)
     }
     else if(target[1] == "det"){
         //console.log(carDData[target[0]], "det")
@@ -128,7 +134,7 @@ function confirmBook(){
 
     var title = document.createElement("h4")
     title.setAttribute("class", "card-title font-weight-bold")
-    title.innerHTML = "Your Booking Is Comfirmed"
+    title.innerHTML = "Your Booking Is Confirmed"
 
     var body = document.createElement("div")
     body.setAttribute("class","card-body")
@@ -158,14 +164,32 @@ function confirmBook(){
        carName.innerHTML = "Name of the Car : " + confirmInfo[0]
 
        var km = document.createElement("p")
-       km.innerHTML = "Total Amount : Rs." + confirmInfo[2]
+       km.innerHTML = "Per Month : Rs." + confirmInfo[2] + "/-"
+
+       inputm = document.getElementById("mon").value
+
+       var mon = document.createElement("p")
+       mon.innerHTML = "No. of Months : " + inputm
+
+       var tot = document.createElement("p")
+      // console.log(confirmInfo[2].split(""))
+       var num = confirmInfo[2].split("")
+       var temp = []
+       for(i=0; i<num.length; i++){
+           if(num[i] != ","){
+                temp.push(num[i])
+           }
+       }
+       var price = Number(temp.join(""))
+       tot.innerHTML = "Total Amount : (" + confirmInfo[2] + "/- x " + inputm + ") => " + price * Number(inputm) + "/-"
+       tot.setAttribute("class", "h4")
 
        var conBtn = document.createElement("button")
        conBtn.setAttribute("class", "btn mt-3 btn-block btn-secondary")
        conBtn.setAttribute("onclick", "confirmSub()")
        conBtn.innerHTML = "print/Save"
 
-       body.append(name, mail, carInfo, img, carName, km, conBtn)
+       body.append(name, mail, carInfo, img, carName, km, mon, tot , conBtn)
 
        var arr = [user[0], user[1], confirmInfo, "sub"]
 
@@ -188,17 +212,21 @@ function confirmBook(){
         carName.innerHTML = "Name of the Car : " + confirmInfo[0]
 
         var km = document.createElement("p")
-        km.innerHTML = "Per Kilomater : " + confirmInfo[2] + "/-"
+        km.innerHTML = "Per Kilometer : " + confirmInfo[2] + "/-"
+
+        var kilo = document.createElement("p")
+        kilo.innerHTML = "No. of Kilometers : " + Number(input)
 
         var total =document.createElement("h4")
-        total.innerHTML = "Total Amount : " + Number(confirmInfo[2]) * Number(input) + "/-"
+        total.innerHTML = "Total Amount : (" + Number(confirmInfo[2]) + "/- x " + Number(input) + ") => " + Number(confirmInfo[2]) * Number(input) + "/-"
+        total.setAttribute("class", "h4")
 
         var conBtn = document.createElement("button")
         conBtn.setAttribute("class", "btn mt-3 btn-block btn-secondary")
         conBtn.setAttribute("onclick","saving()")
         conBtn.innerHTML = "print/Save"
 
-        body.append(name, mail, carInfo, img, carName, km, total, conBtn)
+        body.append(name, mail, carInfo, img, carName, km, kilo, total, conBtn)
 
         var arr = [user[0], user[1], confirmInfo, Number(confirmInfo[2]) * Number(input),  "det"]
 

@@ -99,13 +99,12 @@ function checkData(){
             generateBill(email)
             event.preventDefault()
             location.href = "bill.html"
-            break
-        }
-        else{
-            alert("Something went wrong! please signup or check your password!")
-        }
-        
+            return
+        }       
     }
+    alert("Something went wrong! please check password or create Account!")
+    event.preventDefault()
+    location.href = "sign.html"
 }
 
 function generateBill(email){

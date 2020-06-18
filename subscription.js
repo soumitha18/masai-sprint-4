@@ -94,7 +94,7 @@ function createCard(data , i){
 
     var text = document.createElement("p")
     text.setAttribute("class", "card-text text-muted mt-3")
-    text.innerHTML = "₹" + data[2]
+    text.innerHTML = "₹" + data[2] + "/mo"
 
     var btn = document.createElement("button")
     btn.setAttribute("class", "btn btn-primary rounded-pill target")
@@ -136,13 +136,12 @@ function checkData(){
             generateBill(email)
             event.preventDefault()
             location.href = "bill.html"
-            break
-        }
-        else{
-            alert("Something went wrong! please signup or check your password!")
-        }
-        
+            return
+        }        
     }
+    alert("Something went wrong! please check password or create Account!")
+    event.preventDefault()
+    location.href = "sign.html"
    
 }
 
