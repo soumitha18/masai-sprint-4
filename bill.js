@@ -14,6 +14,10 @@ var loginData = JSON.parse(login)
 
 var user
 
+var bookDetails = localStorage.getItem("bookDetails")
+
+var bookData = JSON.parse(bookDetails) || []
+
 window.addEventListener("load", function(){
     //console.log(carData[target[0]])
 
@@ -162,6 +166,15 @@ function confirmBook(){
        conBtn.innerHTML = "print/Save"
 
        body.append(name, mail, carInfo, img, carName, km, conBtn)
+
+       var arr = [user[0], user[1], confirmInfo, "sub"]
+
+       bookData.push(arr)
+
+       var str = JSON.stringify(bookData)
+
+        localStorage.setItem("bookDetails" , str)
+
     }
     else if(target[1] == "det"){
         //console.log(carDData[target[0]], "det")
@@ -186,6 +199,14 @@ function confirmBook(){
         conBtn.innerHTML = "print/Save"
 
         body.append(name, mail, carInfo, img, carName, km, total, conBtn)
+
+        var arr = [user[0], user[1], confirmInfo, Number(confirmInfo[2]) * Number(input),  "det"]
+
+        bookData.push(arr)
+
+        var str = JSON.stringify(bookData)
+
+        localStorage.setItem("bookDetails" , str)
     }    
     card.append(title, body)
 }
