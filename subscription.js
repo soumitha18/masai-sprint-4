@@ -135,13 +135,14 @@ function checkData(){
         if(email == data[i][1]){
             if(password == data[i][2]){
                 generateBill(email)
+                event.preventDefault()
+                location.href = "bill.html"
                 break
             }
         }
     }
 
-    event.preventDefault()
-    location.href = "bill.html"
+   
 }
 
 function generateBill(email){
