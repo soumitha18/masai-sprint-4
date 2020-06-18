@@ -140,6 +140,9 @@ function checkData(){
                 break
             }
         }
+        else{
+            alert("Sorry Somthing went wrong! check your login details!")
+        }
     }
 
    

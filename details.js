@@ -33,7 +33,7 @@ function createHL(cars){
     var div = document.getElementById("cars")
     div.innerHTML = ""
 
-    for(i=cars.length - 1; i>0; i--){
+    for(i=cars.length - 1; i>=0; i--){
         var data = createCard(cars[i], i)
         div.append(data)
     }
@@ -97,13 +97,15 @@ function checkData(){
         if(email == data[i][1]){
             if(password == data[i][2]){
                 generateBill(email)
+                event.preventDefault()
+                location.href = "bill.html"
                 break
             }
         }
+        else{
+            alert("Sorry Somthing went wrong! check your login details!")
+        }
     }
-
-    event.preventDefault()
-    location.href = "bill.html"
 }
 
 function generateBill(email){
