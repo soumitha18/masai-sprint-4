@@ -132,16 +132,17 @@ function checkData(){
     var data = JSON.parse(loginData)
     
     for(var i=0; i<data.length; i++){
-        if(email == data[i][1]){
-            if(password == data[i][2]){
-                generateBill(email)
-                event.preventDefault()
-                location.href = "bill.html"
-                break
-            }
+        if(password == data[i][2] && email == data[i][1]){
+            generateBill(email)
+            event.preventDefault()
+            location.href = "bill.html"
+            break
         }
+        else{
+            alert("Something went wrong! please signup or check your password!")
+        }
+        
     }
-
    
 }
 
