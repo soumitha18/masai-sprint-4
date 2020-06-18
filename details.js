@@ -1,6 +1,7 @@
 var data = localStorage.getItem("carDetails")
 var totalCars = JSON.parse(data)
 var targetbtn
+
 window.addEventListener("load", function(){
 
     createLH(totalCars)
@@ -50,8 +51,8 @@ function createCard(data, i){
     title.innerHTML = data[0]
 
     var img = document.createElement("img")
-    img.setAttribute("src" , "https://images.unsplash.com/photo-1561131506-3c48296e2c20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")
-    img.setAttribute("class", "offset-2 width")
+    img.setAttribute("src" , data[1])
+    img.setAttribute("class", "offset-3 width")
 
     var text = document.createElement("p")
     text.setAttribute("class", "card-text text-muted")
@@ -101,9 +102,6 @@ function checkData(){
                 location.href = "bill.html"
                 break
             }
-        }
-        else{
-            alert("Sorry Somthing went wrong! check your login details!")
         }
     }
 }

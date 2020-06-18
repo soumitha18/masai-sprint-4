@@ -67,7 +67,7 @@ function renderData(){
 
         var confirmInfo = carSData[target[0]]
         var img = document.createElement("img")
-        img.setAttribute("src", "https://images.unsplash.com/photo-1561131506-3c48296e2c20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")
+        img.setAttribute("src", confirmInfo[1])
         img.style.width = "150px"
 
         var carName = document.createElement("p")
@@ -75,7 +75,7 @@ function renderData(){
         carName.innerHTML = "Name of the Car : " + confirmInfo[0]
 
         var km = document.createElement("p")
-        km.innerHTML = "Per Kilomater : " + confirmInfo[2]
+        km.innerHTML = "Per Month Total Prize : Rs." + confirmInfo[2]
 
         var conBtn = document.createElement("button")
         conBtn.setAttribute("class", "btn mt-3 btn-block btn-secondary")
@@ -88,7 +88,7 @@ function renderData(){
         //console.log(carDData[target[0]], "det")
         var confirmInfo = carDData[target[0]]
         var img = document.createElement("img")
-        img.setAttribute("src", "https://images.unsplash.com/photo-1561131506-3c48296e2c20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")
+        img.setAttribute("src", confirmInfo[1])
         img.style.width = "150px"
 
         var carName = document.createElement("p")
@@ -146,7 +146,7 @@ function confirmBook(){
 
        var confirmInfo = carSData[target[0]]
        var img = document.createElement("img")
-       img.setAttribute("src", "https://images.unsplash.com/photo-1561131506-3c48296e2c20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")
+       img.setAttribute("src", confirmInfo[1])
        img.style.width = "150px"
 
        var carName = document.createElement("p")
@@ -154,7 +154,7 @@ function confirmBook(){
        carName.innerHTML = "Name of the Car : " + confirmInfo[0]
 
        var km = document.createElement("p")
-       km.innerHTML = "Per Kilomater : " + confirmInfo[2]
+       km.innerHTML = "Total Amount : Rs." + confirmInfo[2]
 
        var conBtn = document.createElement("button")
        conBtn.setAttribute("class", "btn mt-3 btn-block btn-secondary")
@@ -167,7 +167,7 @@ function confirmBook(){
         //console.log(carDData[target[0]], "det")
         var confirmInfo = carDData[target[0]]
         var img = document.createElement("img")
-        img.setAttribute("src", "https://images.unsplash.com/photo-1561131506-3c48296e2c20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")
+        img.setAttribute("src", confirmInfo[1])
         img.style.width = "150px"
 
         var carName = document.createElement("p")

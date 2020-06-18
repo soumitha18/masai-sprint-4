@@ -89,12 +89,12 @@ function createCard(data , i){
     title.innerHTML = data[0]
 
     var img = document.createElement("img")
-    img.setAttribute("src" , "https://images.unsplash.com/photo-1561131506-3c48296e2c20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")
+    img.setAttribute("src" , data[1])
     img.setAttribute("class", "offset-3 width")
 
     var text = document.createElement("p")
     text.setAttribute("class", "card-text text-muted mt-3")
-    text.innerHTML = "Per Kilometer : ₹" + data[2]
+    text.innerHTML = "₹" + data[2]
 
     var btn = document.createElement("button")
     btn.setAttribute("class", "btn btn-primary rounded-pill target")
@@ -139,9 +139,6 @@ function checkData(){
                 location.href = "bill.html"
                 break
             }
-        }
-        else{
-            alert("Sorry Somthing went wrong! check your login details!")
         }
     }
 
