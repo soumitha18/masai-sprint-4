@@ -36,6 +36,10 @@ window.addEventListener("load", function(){
 
     con.addEventListener("click", confirmBook)
 
+    var can = document.getElementById("cancel")
+
+    can.addEventListener("click", cancelBook)
+
     var gotoH = document.getElementById("gotoHome")
 
     gotoH.addEventListener("click", gotoHome)
@@ -87,12 +91,22 @@ function renderData(){
         input.setAttribute("type", "number")
         input.setAttribute("placeholder", "Enter No of Months!")
 
+        btnDiv = document.createElement("div")
+        btnDiv.setAttribute("class", "float-right")
+
         var conBtn = document.createElement("button")
-        conBtn.setAttribute("class", "btn mt-3 btn-block btn-secondary")
+        conBtn.setAttribute("class", "btn mx-3 mt-3 btn-secondary")
         conBtn.setAttribute("id", "confirm")
         conBtn.innerHTML = "confirm"
 
-        body.append(name, mail, carInfo, img, carName, km, input, conBtn)
+        var canBtn = document.createElement("button")
+        canBtn.setAttribute("class", "btn mx-3 mt-3 btn-secondary")
+        canBtn.setAttribute("id", "cancel")
+        canBtn.innerHTML = "cancel"
+
+        btnDiv.append(conBtn, canBtn)
+
+        body.append(name, mail, carInfo, img, carName, km, input, btnDiv)
     }
     else if(target[1] == "det"){
         //console.log(carDData[target[0]], "det")
@@ -113,13 +127,23 @@ function renderData(){
         input.setAttribute("id", "km")
         input.setAttribute("type", "number")
         input.setAttribute("placeholder", "Enter No of Kilometers!")
+    
+        var btnDiv = document.createElement("div")
+        btnDiv.setAttribute("class", "float-right")
 
         var conBtn = document.createElement("button")
-        conBtn.setAttribute("class", "btn mt-3 btn-block btn-secondary")
+        conBtn.setAttribute("class", "btn mt-3 mx-3 btn-secondary")
         conBtn.setAttribute("id", "confirm")
         conBtn.innerHTML = "confirm"
 
-        body.append(name, mail, carInfo, img, carName, km, input, conBtn)
+        var canBtn = document.createElement("button")
+        canBtn.setAttribute("class", "btn mt-3 mx-3 btn-secondary")
+        canBtn.setAttribute("id", "cancel")
+        canBtn.innerHTML = "cancel"
+
+        btnDiv.append(conBtn, canBtn)
+
+        body.append(name, mail, carInfo, img, carName, km, input, btnDiv)
     }    
     card.append(title, body)
 }   
@@ -180,7 +204,7 @@ function confirmBook(){
                 temp.push(num[i])
            }
        }
-       var price = Number(temp.join(""))
+       var price = Number(temp.join(""))    
        tot.innerHTML = "Total Amount : (" + confirmInfo[2] + "/- x " + inputm + ") => " + price * Number(inputm) + "/-"
        tot.setAttribute("class", "h4")
 
@@ -254,4 +278,15 @@ function confirmSub(){
     alert("Thanks for Your Subscription! your subscription details send to your Email!")
 
     gotoHome()
+}
+
+function cancelBook(){
+    if(target[1] == "sub"){
+        event.preventDefault()
+        location.href = "subscription.html"
+    }
+    else if(target[1] == "det"){
+        event.preventDefault()
+        location.href = "details.html"
+    }
 }
