@@ -22,5 +22,4 @@ When user books a car then the confirmation and the INVOICE will be generated as
 
 <img src="resources/invoice.jpeg"/>
 
-The Data such as car details, subscription details, user login details, Invoice details stored in 
-# LocalStorage
+The Data such as Car Details, Subscription Details, User Login Details, Invoice details stored in <b>LocalStorage<b>
