@@ -17,3 +17,10 @@ If the user requries car for a long period, user can subscribe the subscription 
 Added a functionality u can sort the cars based on the price from low to high or high to low
 
 <img src="resources/sorting.jpeg"/>
+
+When user books a car then the confirmation and the INVOICE will be generated as follows,
+
+<img src="resources/invoice.jpeg"/>
+
+The Data such as car details, subscription details, user login details, Invoice details stored in 
+# LocalStorage
